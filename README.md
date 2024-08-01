@@ -17,8 +17,8 @@ The Function App will provide a single API endpoint that will return the VMs and
 In this request, the following parameters are expected:
 
 - `subscription-id`: The subscription ID for which the information should be retrieved.
-- `location`: The Azure region in which the VMs and VMSSes should be retrieved, in the form of westeurope or westus.
-- `family`: The family of the VMs and VMSSes that should be retrieved, in the form of standardBSFamily or standardDSFamily.
+- `location`: The Azure region in which the VMs and VMSSes should be retrieved, in the form of westeurope or westus. The locations can be retrieved using Azure CLI `az account list-locations --query "[].name"` or PowerShell `Get-AzLocation | Select-Object -ExpandProperty Location`.
+- `family`: The family of the VMs and VMSSes that should be retrieved, in the form of standardBSFamily or standardDSFamily. The families can be retrieved using Azure CLI `az vm list-skus --location westeurope --query "[].family"` or PowerShell `Get-AzComputeResourceSku -Location westeurope | Select-Object -ExpandProperty Family -Unique`.
 
 The response will be something similar to the following:
 
